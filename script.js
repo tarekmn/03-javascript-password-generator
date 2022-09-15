@@ -1,14 +1,24 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 
-// Global Variables:
 
-
+// Global Variables:                    ??unfortuantly the new variables are not saving??
 let userCharacters= 8;
 let lowerCaseUser= true;
 let upperCaseUser = true;
 let numericalUser = true;
 let specialUser = true;
+
+//Declaring the arrays of range of potential outcomes
+var lowerCaseLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+var upperCaseLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+var specialCharacters = [' ','!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[', ']', '^', '_' , '`', '{', '|', '}', '~'] ;
+var digits = ['0', '1', '2', '3','4', '5', '6', '7', '8', '9'];
+var targetArray = [ ]; 
+var joinedTargetArray = [ ];
+var finalPassword= [ ];
+
+
 
 // Write password to the #password input
 function writePassword() {
@@ -25,7 +35,9 @@ function generatePassword () {
   useUpperCase(); 
   useNumerical();
   useSpecial();
-
+  generatePasswordArray ();
+  console.log(finalPassword)
+  
 };
 
 
@@ -61,19 +73,13 @@ function useSpecial() {
 
 
 
-//Declaring the arrays of range of potential outcomes
-var lowerCaseLetters = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
-var upperCaseLetters = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
-var specialCharacters = [' ','!', '#', '$', '%', '&', "'", '(', ')', '*', '+', ',', '-', '.', '/', ':', ';', '<', '=', '>', '?', '@', '[','U+005C', ']', '^', '_' , '`', '{', '|', '}', '~'] ;
-var digits = ['0', '1', '2', '3','4', '5', '6', '7', '8', '9'];
 
-var targetArray = [ ] 
-
-//gneratePassword() i'm guessing it feeds to the writePassword function 
+//to filter out using userinputs//
 
 if (lowerCaseUser === true) {
    targetArray.push(lowerCaseLetters)
-}; 
+};
+
 if (upperCaseUser === true) {
   targetArray.push(upperCaseLetters)
 }; 
@@ -85,19 +91,29 @@ if (specialUser === true) {
   targetArray.push(specialCharacters)
 };
 
-var joinedTargetArray = targetArray.flat() ;
+joinedTargetArray = targetArray.flat() ;
 
-
+//console.log(targetArray);
 console.log(joinedTargetArray);
 
 
 
-//loop sample
-//for (var i =8; i < userCharacters ; i++ ) {
-// return joinedTargetArray[i]
-//  
-//}
-// };
+function generatePasswordArray () {
+for (var i = 0; i < userCharacters; i++ ) {
+var min =0;
+var max =joinedTargetArray.length;
+var randomx= Math.floor(Math.random () * (max - min +1) + min);
+finalPassword.push(joinedTargetArray[randomx])
+
+} }
+
+
+
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
+
+
+
 
 // //just to make sure variables save
 
@@ -106,17 +122,3 @@ console.log(joinedTargetArray);
 // console.log(upperCaseUser);
 // console.log(numericalUser);
 // console.log(specialUser);
-
-
-//Random generator if needed
-var min =0;
-var max =8;
-var random= Math.floor(Math.random () * (max - min +1) + min);
-
-
-
-
-
-
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
