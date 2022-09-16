@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 
-// Global Variables:                    ??unfortuantly the new variables are not saving??
+// Global Variables:                 //issue #1 ??unfortuantly the new variables are not saving??
 let userCharacters= 8;
 let lowerCaseUser= true;
 let upperCaseUser = true;
@@ -16,7 +16,8 @@ var specialCharacters = [' ','!', '#', '$', '%', '&', "'", '(', ')', '*', '+', '
 var digits = ['0', '1', '2', '3','4', '5', '6', '7', '8', '9'];
 var targetArray = [ ]; 
 var joinedTargetArray = [ ];
-var finalPassword= [ ];
+var arrayPassword= [ ];
+//var password1 = arrayPassword.join("")           //Where is the correct place to declare this?
 
 
 
@@ -28,7 +29,7 @@ function writePassword() {
 
 }
 
-//Generate Password trigger
+//Generate Password trigger            //issue #2 the generate password button works only once
 function generatePassword () {
   howManyCharacters ();
   useLowerCase();
@@ -36,8 +37,9 @@ function generatePassword () {
   useNumerical();
   useSpecial();
   generatePasswordArray ();
-  console.log(finalPassword)
-  
+  var password1 = arrayPassword.join("")  
+  console.log(password1)
+  return password1
 };
 
 
@@ -103,7 +105,7 @@ for (var i = 0; i < userCharacters; i++ ) {
 var min =0;
 var max =joinedTargetArray.length;
 var randomx= Math.floor(Math.random () * (max - min +1) + min);
-finalPassword.push(joinedTargetArray[randomx])
+arrayPassword.push(joinedTargetArray[randomx]);
 
 } }
 
