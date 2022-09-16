@@ -18,14 +18,14 @@ This code does not require any installation. The HTML and Assets folders are pro
 ## Usage
 The following code base was uploaded to a URL using GitHub for your convivence. The following URL is:
 
-X
+https://tarekmn.github.io/03-javascript-password-generator/
 
 
-In addition, I included three screen shots below: 
+In addition, I included screenshot below: 
 
 
-![screenshot #1](X)
-![screenshot #2](X)
+![screenshot #1](./assets/Screenshot%20of%20password%20generator.png)
+
 
 
 
