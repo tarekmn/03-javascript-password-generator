@@ -1,7 +1,9 @@
 # 03 JavaScript: Password Generator
 
 ## Description
+A corporate client has reached out looking for help to create a password generator for their employees. Their request was for the generator to accept a user choice of 8 to 128 characters. The user can also choose whether or not to include lowercase, uppercase, numeric, and/or special characters. 
 
+I accomplished this request by using HTML, CSS for the interface and JavaScript for the logic.
 
  
 
