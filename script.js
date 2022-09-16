@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 
 
-// Global Variables:                 //issue #1 ??unfortuantly the new variables are not saving??
+// Global Variables:              
 let userCharacters= 8;
 let lowerCaseUser= true;
 let upperCaseUser = true;
@@ -17,8 +17,7 @@ var digits = ['0', '1', '2', '3','4', '5', '6', '7', '8', '9'];
 var targetArray = [ ]; 
 var joinedTargetArray = [ ];
 var arrayPassword= [ ];
-//var password1 = arrayPassword.join("")           //Where is the correct place to declare this?
-
+//var password1 = arrayPassword.join("")           
 
 
 // Write password to the #password input
@@ -29,13 +28,21 @@ function writePassword() {
 
 }
 
-//Generate Password trigger            //issue #2 the generate password button works only once
+//Generate Password trigger           
 function generatePassword () {
+  console.log("button clicked");
   howManyCharacters ();
+  if (userCharacters < 8 || userCharacters > 128) {
+    alert("please choose more than 8 or less than 128")
+    return generatePassword ();
+  }; 
   useLowerCase();
   useUpperCase(); 
   useNumerical();
   useSpecial();
+  targetArray = [];
+  filterInputs ();
+  arrayPassword = [];
   generatePasswordArray ();
   var password1 = arrayPassword.join("")  
   console.log(password1)
@@ -78,6 +85,7 @@ function useSpecial() {
 
 //to filter out using userinputs//
 
+function filterInputs () {
 if (lowerCaseUser === true) {
    targetArray.push(lowerCaseLetters)
 };
@@ -92,8 +100,10 @@ if (numericalUser === true) {
 if (specialUser === true) {
   targetArray.push(specialCharacters)
 };
+joinedTargetArray = targetArray.flat()
+}
 
-joinedTargetArray = targetArray.flat() ;
+
 
 //console.log(targetArray);
 console.log(joinedTargetArray);
@@ -103,7 +113,7 @@ console.log(joinedTargetArray);
 function generatePasswordArray () {
 for (var i = 0; i < userCharacters; i++ ) {
 var min =0;
-var max =joinedTargetArray.length;
+var max = joinedTargetArray.length;
 var randomx= Math.floor(Math.random () * (max - min +1) + min);
 arrayPassword.push(joinedTargetArray[randomx]);
 
@@ -117,10 +127,3 @@ generateBtn.addEventListener("click", writePassword);
 
 
 
-// //just to make sure variables save
-
-// console.log(userCharacters);
-// console.log(lowerCaseUser);
-// console.log(upperCaseUser);
-// console.log(numericalUser);
-// console.log(specialUser);
